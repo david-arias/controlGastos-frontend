@@ -15,7 +15,7 @@
     font-weight: 900;
     font-size: 1.5rem;
     margin: 0 0 1rem 0;
-    color: var(--primary-white)
+    color: var(--primary-white);
 }
 
 .topInfo p {
@@ -23,7 +23,7 @@
     font-size: 1rem;
     font-weight: 300;
     margin: 0 0 1rem 0;
-    color: var(--primary-white)
+    color: var(--primary-white);
 }
 
 /* Bottom Forms */
@@ -148,7 +148,7 @@
     display: flex;
     align-items: center;
     transition: all 300ms ease-in-out;
-    color: var(--primary-accent-color)
+    color: var(--primary-accent-color);
 }
 
 .bottomForm .formBox .itemField .fieldBox .textField input {
@@ -163,8 +163,14 @@
     color: var(--primary-mid-color);
 }
 
-.bottomForm .formBox .itemField .fieldBox .textField input:focus~label,
-.bottomForm .formBox .itemField .fieldBox .textField input:not(:placeholder-shown)~label {
+.bottomForm .formBox .itemField .fieldBox .textField input:focus ~ label,
+.bottomForm
+    .formBox
+    .itemField
+    .fieldBox
+    .textField
+    input:not(:placeholder-shown)
+    ~ label {
     height: 16px;
     font-size: 0.7rem;
     top: -8px;
@@ -182,4 +188,35 @@
     background: transparent;
     padding: 0;
     color: var(--primary-accent-color);
+}
+
+.bottomForm .formBox .itemField .fieldBox .fieldsSel {
+    width: calc(100% - 40px);
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.bottomForm .formBox .itemField .fieldBox .fieldsSel .selectField {
+    width: calc(100% - 56px);
+}
+.bottomForm .formBox .itemField .fieldBox .fieldsSel .selectField select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: var(--primary-white);
+    background-image: none;
+    flex: 1;
+    padding: 0 0.5em;
+    color: var(--primary-mid-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    height: 40px;
 }
