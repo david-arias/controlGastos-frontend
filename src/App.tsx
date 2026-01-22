@@ -1,4 +1,5 @@
-import "./App.css";
+import "animate.css";
+
 import {
     BrowserRouter as Router,
     Routes,
@@ -6,9 +7,8 @@ import {
     Navigate,
 } from "react-router-dom";
 
-import Login from "./components/login/login";
+import LoginPage from "./components/loginPage/loginPage";
 import Dashboard from "./components/dashboard";
-
 import ProtectedRoute from "./components/protectedRoute";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
                         isAuthenticated ? (
                             <Navigate to="/dashboard" />
                         ) : (
-                            <Login />
+                            <LoginPage />
                         )
                     }
                 />
@@ -36,7 +36,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/dashboard"
+                    path="/"
                     element={
                         isAuthenticated ? (
                             <Dashboard />
@@ -44,10 +44,6 @@ function App() {
                             <Navigate to="/login" />
                         )
                     }
-                />
-                <Route
-                    path="/"
-                    element={isAuthenticated ? <Dashboard /> : <Login />}
                 />
             </Routes>
         </Router>

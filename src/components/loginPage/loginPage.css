@@ -1,0 +1,47 @@
+.topMssg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100vw;
+    height: 30vh;
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+.topMssg h3 {
+    color: var(--primary-dark-color);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0 0 16px 0;
+}
+.topMssg p {
+    color: var(--primary-dark-color);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.mainBox {
+    background: var(--primary-mid-color);
+    background: linear-gradient(
+        0deg,
+        var(--primary-mid-color) 0%,
+        var(--primary-light-color) 100%
+    );
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    transition: all 300ms ease-in-out;
+}
+.mainBox.loaded {
+    height: 70vh;
+    display: block;
+    bottom: 0;
+    border-radius: 40px 40px 0 0;
+}
