@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+    --anima-delay: 100ms;
+}
+@layer components {
+    /*  Animate aimation-delays  */
+    .anima-delay-0 {
+        animation-delay: 0ms;
+        animation-duration: 100ms;
+    }
+    .anima-delay-100 {
+        animation-delay: 100ms;
+        animation-duration: 100ms;
+    }
+    .anima-delay-200 {
+        animation-delay: 200ms;
+        animation-duration: 200ms;
+    }
+    .anima-delay-300 {
+        animation-delay: 300ms;
+        animation-duration: 300ms;
+    }
+    .anima-delay-400 {
+        animation-delay: 400ms;
+        animation-duration: 400ms;
+    }
+    .anima-delay-500 {
+        animation-delay: 500ms;
+        animation-duration: 500ms;
+    }
+}
+
+*,
+body {
+    font-family: "Ubuntu", sans-serif;
+    box-sizing: border-box;
+}
+
+/*  RESETS  */
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+/*  Border-bisel  */
+.borderBisel-rounded {
+    position: relative;
+}
+.borderBisel-rounded:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--spacing) * 20);
+    padding: 1px;
+    z-index: -10;
+
+    background: linear-gradient(
+        180deg,
+        --alpha(var(--color-slate-50) / 50%),
+        --alpha(var(--color-slate-50) / 0%)
+    );
+
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+}
+.borderBisel-2 {
+    position: relative;
+}
+.borderBisel-2:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: calc(var(--spacing) * 2);
+    padding: 1px;
+    z-index: -10;
+
+    background: linear-gradient(
+        180deg,
+        --alpha(var(--color-slate-50) / 50%),
+        --alpha(var(--color-slate-50) / 0%)
+    );
+
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+}
+
+/* Forms styles - text input */
+.textField input {
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 2px 16px;
+}
+.textField .lbl {
+    top: 8px;
+    left: 16px;
+}
+.textField input:focus,
+.textField input:not(:placeholder-shown) {
+    padding: 18px 16px 0px 16px;
+}
+.textField input:focus ~ label,
+.textField input:not(:placeholder-shown) ~ label {
+    font-size: 0.7rem;
+    top: -2px;
+    color: --alpha(var(--color-slate-50) / 50%);
+}
+.textField input:focus {
+    border: none;
+    outline: none;
+}
+
+/* Forms styles - select input */
+
+.selField select,
+.selField ::picker(select) {
+    appearance: base-select;
+    padding: 8px 0 0 0;
+}
+.selField ::picker(select) {
+    top: calc(anchor(bottom) - 50%);
+    left: anchor(0%);
+    opacity: 0;
+    transition: all 0.4s allow-discrete;
+    border-radius: 16px;
+    background: var(--white-color--50);
+    backdrop-filter: blur(6px);
+}
+.selField ::picker(select):popover-open {
+    opacity: 1;
+}
+@starting-style {
+    ::picker(select):popover-open {
+        opacity: 0;
+    }
+}
+
+.selField option {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    border-bottom: 2px solid --alpha(var(--color-slate-50) / 50%);
+    background: --alpha(var(--color-blue-900) / 50%);
+    color: var(--color-slate-50);
+    padding: 10px;
+    transition: 0.4s;
+    width: 100%;
+    border-radius: 4px;
+}
+.selField option:nth-of-type(odd) {
+    background: --alpha(var(--color-blue-900) / 75%);
+}
+.selField option:first-of-type {
+    border-radius: 4px 4px 0 0;
+}
+
+.selField option:last-of-type {
+    border-radius: 0 0 4px 4px;
+}
+
+.selField option:not(option:last-of-type) {
+    border-bottom: none;
+}
+
+.selField option:hover,
+.selField option:focus {
+    background: --alpha(var(--color-slate-50) / 15%);
+}
+.selField option .icon {
+    font-size: 1.6rem;
+}
+.selField option:checked {
+    font-weight: bold;
+}
+.selField option::checkmark {
+    order: 1;
+    margin-left: auto;
+}
+/**/
