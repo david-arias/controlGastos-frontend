@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { BiUser, BiLock, BiShow, BiSolidShow } from "react-icons/bi";
 
+import Loader from "../loader/loader";
+
 import api from "../../api/axios";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -9,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     let [isPassVisisble, setIsPassVisisble] = useState(true);
+    let [isLoading, setIsLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         username: "",
@@ -19,6 +22,8 @@ function LoginForm() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
+        setIsLoading((isLoading = true));
 
         const notifyError = (mssgErrorTtl: string, mssgErrorBody: string) => {
             toast.error(
@@ -36,12 +41,18 @@ function LoginForm() {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
 
-            navigate("/dashboard");
+            setTimeout(() => {
+                setIsLoading((isLoading = false));
+                navigate("/dashboard");
+            }, 1200);
         } catch (err: any) {
-            notifyError(
-                err.response?.data?.title || "Error al iniciar sesión",
-                err.response?.data?.text || "",
-            );
+            setTimeout(() => {
+                setIsLoading((isLoading = false));
+                notifyError(
+                    err.response?.data?.title || "Error al iniciar sesión",
+                    err.response?.data?.text || "",
+                );
+            }, 1200);
         }
 
         console.log(formData);
@@ -49,6 +60,8 @@ function LoginForm() {
 
     return (
         <>
+            {!isLoading ? <></> : <Loader />}
+
             <form onSubmit={handleSubmit}>
                 <div className="pb-4 animate__animated animate__fadeInUp anima-delay-0">
                     <div className="borderBisel-2 bg-slate-50/15 backdrop-blur-sm rounded-lg ">

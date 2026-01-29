@@ -1,7 +1,9 @@
 // import "./App.css";
 
+// MAIN STYLES
 import "animate.css";
 
+// ROUTES
 import {
     BrowserRouter as Router,
     Routes,

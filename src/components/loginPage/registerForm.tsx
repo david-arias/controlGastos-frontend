@@ -9,6 +9,8 @@ import {
     BiDollar,
 } from "react-icons/bi";
 
+import Loader from "../loader/loader";
+
 import api from "../../api/axios";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -20,6 +22,7 @@ interface RegisterProps {
 
 function RegisterForm({ onRegisterSuccess }: RegisterProps) {
     let [isPassVisisble, setIsPassVisisble] = useState(true);
+    let [isLoading, setIsLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         username: "",
@@ -30,6 +33,8 @@ function RegisterForm({ onRegisterSuccess }: RegisterProps) {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
+        setIsLoading((isLoading = true));
 
         const notifyError = (mssgErrorTtl: string, mssgErrorBody: string) => {
             toast.error(
@@ -50,6 +55,7 @@ function RegisterForm({ onRegisterSuccess }: RegisterProps) {
                 })
                 .then((res: any) => {
                     if (res.isDismissed) {
+                        setIsLoading((isLoading = false));
                         onRegisterSuccess();
                     }
                 });
@@ -57,20 +63,28 @@ function RegisterForm({ onRegisterSuccess }: RegisterProps) {
 
         try {
             const res = await api.post("/auth/register", formData);
-            showSwal(
-                res.data?.title || "Error al registrar",
-                res.data?.text || "",
-            );
+
+            setTimeout(() => {
+                showSwal(
+                    res.data?.title || "Error al registrar",
+                    res.data?.text || "",
+                );
+            }, 1200);
         } catch (err: any) {
-            notifyError(
-                err.response?.data?.title || "Error al registrar",
-                err.response?.data?.text || "",
-            );
+            setTimeout(() => {
+                setIsLoading((isLoading = false));
+                notifyError(
+                    err.response?.data?.title || "Error al registrar",
+                    err.response?.data?.text || "",
+                );
+            }, 1200);
         }
     };
 
     return (
         <>
+            {!isLoading ? <></> : <Loader />}
+
             <form onSubmit={handleSubmit}>
                 <div className="pb-4 animate__animated animate__fadeInUp anima-delay-0">
                     <div className="borderBisel-2 bg-slate-50/15 backdrop-blur-sm rounded-lg ">

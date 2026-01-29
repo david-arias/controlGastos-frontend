@@ -3,8 +3,8 @@
 @import "tailwindcss";
 
 @theme {
-    --anima-delay: 100ms;
 }
+
 @layer components {
     /*  Animate aimation-delays  */
     .anima-delay-0 {
@@ -43,6 +43,12 @@ body {
 svg {
     width: 100%;
     height: 100%;
+}
+.animate__animated.animate__fadeIn {
+    animation-duration: 300ms;
+}
+.anima-noFade .animate__animated.animate__fadeIn {
+    animation-duration: 0ms;
 }
 
 /*  Border-bisel  */
@@ -184,4 +190,3 @@ svg {
     order: 1;
     margin-left: auto;
 }
-/**/
