@@ -54,8 +54,6 @@ function LoginForm() {
                 );
             }, 1200);
         }
-
-        console.log(formData);
     };
 
     return (

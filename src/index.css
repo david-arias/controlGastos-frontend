@@ -2,31 +2,36 @@
 
 @import "tailwindcss";
 
-@theme {
-}
+@theme {}
 
 @layer components {
+
     /*  Animate aimation-delays  */
     .anima-delay-0 {
         animation-delay: 0ms;
         animation-duration: 100ms;
     }
+
     .anima-delay-100 {
         animation-delay: 100ms;
         animation-duration: 100ms;
     }
+
     .anima-delay-200 {
         animation-delay: 200ms;
         animation-duration: 200ms;
     }
+
     .anima-delay-300 {
         animation-delay: 300ms;
         animation-duration: 300ms;
     }
+
     .anima-delay-400 {
         animation-delay: 400ms;
         animation-duration: 400ms;
     }
+
     .anima-delay-500 {
         animation-delay: 500ms;
         animation-duration: 500ms;
@@ -44,9 +49,11 @@ svg {
     width: 100%;
     height: 100%;
 }
+
 .animate__animated.animate__fadeIn {
     animation-duration: 300ms;
 }
+
 .anima-noFade .animate__animated.animate__fadeIn {
     animation-duration: 0ms;
 }
@@ -55,6 +62,7 @@ svg {
 .borderBisel-rounded {
     position: relative;
 }
+
 .borderBisel-rounded:before {
     content: "";
     position: absolute;
@@ -63,20 +71,20 @@ svg {
     padding: 1px;
     z-index: -10;
 
-    background: linear-gradient(
-        180deg,
-        --alpha(var(--color-slate-50) / 50%),
-        --alpha(var(--color-slate-50) / 0%)
-    );
+    background: linear-gradient(180deg,
+            --alpha(var(--color-slate-50) / 50%),
+            --alpha(var(--color-slate-50) / 0%));
 
     mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
     mask-composite: exclude;
 }
+
 .borderBisel-2 {
     position: relative;
 }
+
 .borderBisel-2:before {
     content: "";
     position: absolute;
@@ -85,11 +93,9 @@ svg {
     padding: 1px;
     z-index: -10;
 
-    background: linear-gradient(
-        180deg,
-        --alpha(var(--color-slate-50) / 50%),
-        --alpha(var(--color-slate-50) / 0%)
-    );
+    background: linear-gradient(180deg,
+            --alpha(var(--color-slate-50) / 50%),
+            --alpha(var(--color-slate-50) / 0%));
 
     mask:
         linear-gradient(#000 0 0) content-box,
@@ -103,20 +109,24 @@ svg {
     background: transparent;
     padding: 2px 16px;
 }
+
 .textField .lbl {
     top: 8px;
     left: 16px;
 }
+
 .textField input:focus,
 .textField input:not(:placeholder-shown) {
     padding: 18px 16px 0px 16px;
 }
-.textField input:focus ~ label,
-.textField input:not(:placeholder-shown) ~ label {
+
+.textField input:focus~label,
+.textField input:not(:placeholder-shown)~label {
     font-size: 0.7rem;
     top: -2px;
     color: --alpha(var(--color-slate-50) / 50%);
 }
+
 .textField input:focus {
     border: none;
     outline: none;
@@ -129,18 +139,22 @@ svg {
     appearance: base-select;
     padding: 8px 0 0 0;
 }
+
 .selField ::picker(select) {
-    top: calc(anchor(bottom) - 50%);
-    left: anchor(0%);
+    /* top: calc(anchor(bottom) - 50%);
+    left: anchor(0%); */
+    top: -40px;
     opacity: 0;
     transition: all 0.4s allow-discrete;
     border-radius: 16px;
     background: var(--white-color--50);
     backdrop-filter: blur(6px);
 }
+
 .selField ::picker(select):popover-open {
     opacity: 1;
 }
+
 @starting-style {
     ::picker(select):popover-open {
         opacity: 0;
@@ -161,9 +175,11 @@ svg {
     width: 100%;
     border-radius: 4px;
 }
+
 .selField option:nth-of-type(odd) {
     background: --alpha(var(--color-blue-900) / 75%);
 }
+
 .selField option:first-of-type {
     border-radius: 4px 4px 0 0;
 }
@@ -180,12 +196,15 @@ svg {
 .selField option:focus {
     background: --alpha(var(--color-slate-50) / 15%);
 }
+
 .selField option .icon {
     font-size: 1.6rem;
 }
+
 .selField option:checked {
     font-weight: bold;
 }
+
 .selField option::checkmark {
     order: 1;
     margin-left: auto;
